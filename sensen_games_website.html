@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sensen Games - Jogos Indie Nostálgicos</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+            margin-top: 100px;
+        }
+
+        :root {
+            --primary-orange: #FF6B35;
+            --contrast-blue: #0077BE;
+            --dark-gray: #2C2C2C;
+            --light-gray: #F5F5F5;
+            --white: #FFFFFF;
+            --black: #000000;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(44, 44, 44, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100px;
+            box-sizing: border-box;
+        }
+
+        .logo img {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary-orange);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            max-width: 70px;
+            border-radius: 50px;
+        }
+
+        .logo:hover {
+            color: var(--contrast-blue);
+            transition: color 0.3s ease;
+        }
+
+        .hamburger {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            cursor: pointer;
+            padding: 10px;
+            background: none;
+            border: none;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: var(--white);
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 300px;
+            height: 100vh;
+            background: var(--dark-gray);
+            transition: right 0.3s ease;
+            z-index: 999;
+            padding-top: 100px;
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-menu a {
+            display: block;
+            color: var(--white);
+            text-decoration: none;
+            padding: 1.5rem 2rem;
+            font-size: 1.2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu a:hover {
+            background: var(--primary-orange);
+            color: var(--white);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: -100px;
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: -1;
+        }
+
+        .hero-content {
+            text-align: center;
+            color: var(--white);
+            z-index: 1;
+            padding: 2rem;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+            margin: auto;
+            max-width: 50%;
+            border-radius: 20px;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            animation: glitch 2s infinite;
+            line-height: 1;
+        }
+
+        @keyframes glitch {
+            0%, 100% { transform: translateX(0); }
+            10% { transform: translateX(-2px); }
+            20% { transform: translateX(2px); }
+            30% { transform: translateX(-2px); }
+            40% { transform: translateX(2px); }
+            50% { transform: translateX(0); }
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease-out 0.5s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 0.9;
+                transform: translateY(0);
+            }
+        }
+
+        /* About Section */
+        .about {
+            padding: 4rem 2rem;
+            background: var(--light-gray);
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: var(--dark-gray);
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            color: var(--primary-orange);
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .about-text h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--contrast-blue);
+        }
+
+        .pixel-art {
+            width: 100%;
+            height: 300px;
+            background: var(--dark-gray);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pixel-bros {
+            font-size: 3rem;
+            color: var(--primary-orange);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
+        /* Games Section */
+        .games {
+            padding: 4rem 2rem;
+            background: var(--dark-gray);
+            color: var(--white);
+        }
+
+        .games h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--primary-orange);
+        }
+
+        .carousel-container {
+            position: relative;
+            overflow: hidden;
+            margin: 2rem 0;
+        }
+
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--primary-orange);
+            color: var(--white);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-nav:hover {
+            background: var(--contrast-blue);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .carousel-nav.prev {
+            left: 20px;
+        }
+
+        .carousel-nav.next {
+            right: 20px;
+        }
+
+        .carousel {
+            display: flex;
+            gap: 2rem;
+            transition: transform 0.5s ease;
+        }
+
+        .game-card {
+            flex-shrink: 0;
+            width: 376px;
+            background: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .game-card:hover {
+            /* transform: translateY(-10px) scale(1.05); */
+        }
+
+        .game-image {
+            width: 100%;
+            height: 176px;
+            background: linear-gradient(45deg, var(--primary-orange), var(--contrast-blue));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--white);
+        }
+        
+        .game-image.comingsoon {
+            filter: grayscale(1);
+        }
+
+        .game-image > img {
+            max-width: 100%;
+        }
+
+        .game-info {
+            padding: 1rem;
+            color: var(--dark-gray);
+        }
+
+        .game-title {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .steam-link {
+            display: inline-block;
+            background: var(--contrast-blue);
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+            display: block;
+            max-width: 150px;
+            text-align: center;
+            margin: auto;
+        }
+
+        .steam-link:hover {
+            background: var(--primary-orange);
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 4rem 2rem;
+            background: var(--primary-orange);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--white);
+            color: var(--primary-orange);
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .contact-link:hover {
+            background: var(--contrast-blue);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .contact-links {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .game-card {
+                width: 180px;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <a href="#home" class="logo"><img src="./img/logo.jpg" alt="Sensen Games"></a>
+        <button class="hamburger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </header>
+
+    <!-- Mobile Menu -->
+    <nav class="mobile-menu" id="mobileMenu">
+        <a href="#home" onclick="closeMenu()">Home</a>
+        <a href="#about" onclick="closeMenu()">A Little about us</a>
+        <a href="#games" onclick="closeMenu()">Our games</a>
+        <a href="#contact" onclick="closeMenu()">Get in touch</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <!-- Placeholder for video background -->
+        <div class="hero-video" style="background: linear-gradient(45deg, #FF6B35, #0077BE); display: flex; align-items: center; justify-content: center; font-size: 2rem; color: white;">
+        <video loop="true" autoplay="true" muted>s
+            <source src="./videos/trailer.mp4" type="video/mp4" />
+        </video>
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">Hi, we are Sensen Games</h1>
+            <p class="hero-subtitle">Brothers creating retro-inspired games.</p>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about fade-in" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>A Little about us</h2>
+                    <p>
+                        We are two brothers that play games together since Super Nintendo and Playstation 1 & 2 eras. We played Megaman X series, Castlevania Sotn, Super Metroid, Aero Fighters, Guitar Hero and other classics all day at the time! After a few years working as web programmer and web designer, we decided to start making the games in the style we love playing: challenging and fun!
+                    </p>
+                   
+                </div>
+                <div class="pixel-art">
+                    <div class="pixel-bros">👨‍💻👨‍🎨</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Games Section -->
+    <section class="games fade-in" id="games">
+        <div class="container">
+            <h2>Our games</h2>
+            <div class="carousel-container">
+                <button class="carousel-nav prev" onclick="moveCarousel(1)">‹</button>
+                <button class="carousel-nav next" onclick="moveCarousel(-1)">›</button>
+                <div class="carousel" id="gameCarousel">
+                    <div class="game-card">
+                        <div class="game-image comingsoon"><img src="./img/akuma_header.jpg" alt=""></div>
+                        <div class="game-info">
+                            <div class="game-title">Akuma's Bloodrain (Coming soon)</div>
+                            <a href="https://store.steampowered.com/app/3692360/Akumas_Bloodrain/" class="steam-link" target="_blank">Ver na Steam</a>
+                        </div>
+                    </div>
+                    <div class="game-card">
+                        <div class="game-image"><img src="./img/spooky_header.jpg" alt=""></div>
+                        <div class="game-info">
+                            <div class="game-title">Spooky Typing: The Ghost Plague</div>
+                            <a href="https://store.steampowered.com/app/1791870/Spooky_Typing_The_Ghost_Plague/" class="steam-link" target="_blank">Ver na Steam</a>
+                        </div>
+                    </div>
+                    <div class="game-card">
+                        <div class="game-image"><img src="./img/typomancer_header.jpg" alt=""></div>
+                        <div class="game-info">
+                            <div class="game-title">Typomancer in the Feather's Way</div>
+                            <a href="https://store.steampowered.com/app/1714300/Typomancer_in_the_Feathers_Way/" class="steam-link" target="_blank">Ver na Steam</a>
+                        </div>
+                    </div>
+                    <div class="game-card">
+                        <div class="game-image"><img src="./img/tyfortress_header.jpg" alt=""></div>
+                        <div class="game-info">
+                            <div class="game-title">Tyfortress: Tactical Typing</div>
+                            <a href="https://store.steampowered.com/app/1661700/Tyfortress_Tactical_Typing/" class="steam-link" target="_blank">Ver na Steam</a>
+                        </div>
+                    </div>
+                    <div class="game-card">
+                        <div class="game-image"><img src="./img/tybot_header.jpg" alt=""></div>
+                        <div class="game-info">
+                            <div class="game-title">Tybot Invasion: The Typing Runner</div>
+                            <a href="https://store.steampowered.com/app/1636000/Tybot_Invasion_The_Typing_Runner/" class="steam-link" target="_blank">Ver na Steam</a>
+                        </div>
+                    </div>
+                    <div class="game-card">
+                        <div class="game-image"><img src="./img/king_header.jpg" alt=""></div>
+                        <div class="game-info">
+                            <div class="game-title">King Bullseye: The Chess Strike</div>
+                            <a href="https://store.steampowered.com/app/1600870/King_Bullseye_The_Chess_Strike/" class="steam-link" target="_blank">Ver na Steam</a>
+                        </div>
+                    </div>
+                    <div class="game-card">
+                        <div class="game-image"><img src="./img/sniper_header.jpg" alt=""></div>
+                        <div class="game-info">
+                            <div class="game-title">Sniper Ships: Shoot'em Up On Rails</div>
+                            <a href="https://store.steampowered.com/app/1555080/Sniper_Ships_Shootem_Up_on_Rails/" class="steam-link" target="_blank">Ver na Steam</a>
+                        </div>
+                    </div>
+                    <div class="game-card">
+                        <div class="game-image"><img src="./img/neonships_header.jpg" alt=""></div>
+                        <div class="game-info">
+                            <div class="game-title">Neon Ships: The Type'em Up Shooter</div>
+                            <a href="https://store.steampowered.com/app/1528580/Neon_Ships_The_Typeem_Up_Shooter/" class="steam-link" target="_blank">Ver na Steam</a>
+                        </div>
+                    </div>
+                    <div class="game-card">
+                        <div class="game-image"><img src="./img/smashing_header.jpg" alt=""></div>
+                        <div class="game-info">
+                            <div class="game-title">Smashing Spirits: Brazil's First Boxer</div>
+                            <a href="https://store.steampowered.com/app/1263200/Smashing_Spirits_Brazils_First_Boxer/" class="steam-link" target="_blank">Ver na Steam</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact fade-in" id="contact">
+        <div class="container">
+            <h2>Get in touch</h2>
+            <p>Get in touch for partnerships, press, or just to chat about games!</p>
+            <div class="contact-links">
+                <a href="https://store.steampowered.com/developer/sensengames" class="contact-link">
+                    🎮 Steam Store
+                </a>
+                <a href="https://drive.google.com/drive/folders/1L_eGgQdwwhAiC6X7qb9LjyxprvuhX3Ma?usp=sharing" class="contact-link">
+                    📁 Press Kit
+                </a>
+                <a href="https://www.instagram.com/sensengames/" class="contact-link">
+                    📱 Instagram
+                </a>
+            </div>
+            <div style="margin-top: 1.5rem; font-size: 1.1rem;">
+                team@sensengames.com
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMenu() {
+            const hamburger = document.querySelector('.hamburger');
+            const mobileMenu = document.getElementById('mobileMenu');
+            
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        }
+
+        function closeMenu() {
+            const hamburger = document.querySelector('.hamburger');
+            const mobileMenu = document.getElementById('mobileMenu');
+            
+            hamburger.classList.remove('active');
+            mobileMenu.classList.remove('active');
+        }
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Carousel navigation
+        let currentCarouselPosition = 0;
+        const carousel = document.querySelector('.carousel');
+        const gameCards = document.querySelectorAll('.game-card');
+        const cardWidth = 376 + 32; // card width + gap
+        const totalCards = gameCards.length; // divided by 2 because we duplicated cards
+        
+        function moveCarousel(direction) {
+            currentCarouselPosition += direction * cardWidth;
+            console.log(currentCarouselPosition);
+            // Reset position if we've gone too far
+            if (currentCarouselPosition > 0) {
+                currentCarouselPosition = -(totalCards * cardWidth) + cardWidth * 3;
+            } else if (currentCarouselPosition <= (-(totalCards * cardWidth)) + cardWidth * 2) {
+                currentCarouselPosition = 0;
+            }
+
+            console.log(currentCarouselPosition);
+            
+            carousel.style.transform = `translateX(${currentCarouselPosition}px)`;
+        }
+
+        // Smooth scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach((el) => {
+            observer.observe(el);
+        });
+
+        // Add click handlers for game cards
+        document.querySelectorAll('.game-card').forEach(card => {
+            card.addEventListener('click', (e) => {
+                if (!e.target.classList.contains('steam-link')) {
+                    const steamLink = card.querySelector('.steam-link');
+                    if (steamLink) {
+                        steamLink.click();
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
