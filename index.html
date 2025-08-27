@@ -587,6 +587,12 @@
             }
         }
 
+        @media (max-width: 600px) {
+            html body .only-desktop {
+                display: none;
+            }
+        }
+
         @media (max-width: 450px) {
             .hero-video video {
                 max-height: 65%;
@@ -628,13 +634,13 @@
     <header class="header">
         <a href="#home" class="logo"><img src="./img/logo.jpg" alt="Sensen Games"></a>
         <a href="https://store.steampowered.com/developer/sensengames" class="link link-steam"><img src="./img/logo_small_steam.png" alt="Sensen Games Steam"></a>
+        <a href="https://bit.ly/sensen-presskit" class="link link-presskit"><img src="./img/logo_small_presskit.png" alt="Sensen Games Presskit"></a>
         <a href="https://instagram.com/sensengames/" class="link link-instagram"><img src="./img/logo_small_instagram.png" alt="Sensen Games Instagram"></a>
-        <a href="https://threads.com/sensengames" class="link link-threads"><img src="./img/logo_small_threads.png" alt="Sensen Games Threads"></a>
+        <a href="https://threads.com/sensengames" class="link link-threads only-desktop"><img src="./img/logo_small_threads.png" alt="Sensen Games Threads"></a>
         <a href="https://sensengames.bsky.social/" class="link link-bluesky"><img src="./img/logo_small_bluesky.png" alt="Sensen Games Bluesky"></a>
         <a href="https://x.com/sensengames" class="link link-x"><img src="./img/logo_small_x.png" alt="Sensen Games X"></a>
-        <a href="https://fb.com/sensengames/" class="link link-facebook"><img src="./img/logo_small_facebook.png" alt="Sensen Games Facebook"></a>
-        <a href="mailto:team@sensengames.com" class="link link-email"><img src="./img/logo_small_email.png" alt="Sensen Games Email"></a>
-        <a href="https://bit.ly/sensen-presskit" class="link link-presskit"><img src="./img/logo_small_presskit.png" alt="Sensen Games Presskit"></a>
+        <a href="https://fb.com/sensengames/" class="link link-facebook only-desktop"><img src="./img/logo_small_facebook.png" alt="Sensen Games Facebook"></a>
+        <a href="mailto:team@sensengames.com" class="link link-email only-desktop"><img src="./img/logo_small_email.png" alt="Sensen Games Email"></a>
 
         <button class="hamburger" onclick="toggleMenu()">
             <span></span>
