@@ -324,9 +324,7 @@
         }
 
         .pixel-bros {
-            font-size: 3rem;
-            color: var(--primary-orange);
-            animation: bounce 2s infinite;
+            object-fit: cover;
         }
 
         @keyframes bounce {
@@ -519,6 +517,13 @@
         }
 
         /* Responsive */
+        @media (max-width: 950px) {
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
         @media (max-width: 768px) {
 
             .header {
@@ -566,11 +571,6 @@
 
             .hero-title {
                 font-size: 2rem;
-            }
-
-            .about-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
             }
 
             .contact-links {
@@ -680,7 +680,7 @@
                    
                 </div>
                 <div class="pixel-art">
-                    <div class="pixel-bros">👨‍💻👨‍🎨</div>
+                    <img class="pixel-bros" src="./img/brothers.jpg" alt="Brothers">
                 </div>
             </div>
         </div>
