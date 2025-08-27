@@ -271,6 +271,14 @@
             align-items: center;
         }
 
+        .flex-column-centered {
+            display: flex;
+            justify-content: center;
+            flex-flow: column nowrap;
+            align-items: center;
+            text-align: center;
+        }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -486,6 +494,7 @@
             gap: 1.5rem;
             flex-wrap: wrap;
             margin-top: 1.5rem;
+            max-width: 800px;
         }
 
         .contact-link {
@@ -673,7 +682,7 @@
 
     <!-- About Section -->
     <section class="about fade-in" id="about">
-        <div class="container">
+        <div class="container ">
             <div class="about-content">
                 <div class="about-text">
                     <h2>A little bit about us</h2>
@@ -767,10 +776,19 @@
 
     <!-- Contact Section -->
     <section class="contact fade-in" id="contact">
-        <div class="container">
+        <div class="container flex-column-centered">
             <h2>Connect with us</h2>
             <p>Get in touch for partnerships, press coverage, or just to chat about games!</p>
-            <div class="contact-links">
+            <div style="margin-top: 1.5rem; font-size: 1.1rem;">
+                <a href="mailto:team@sensengames.com">team@sensengames.com</a>
+            </div>
+
+            <div style="margin-top: 1.5rem;">
+                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdxrenwBdfQOKkD1T5lOaKaszax-pKQAQVe7fFrPWj_RDPrjg/viewform?embedded=true" 
+                    width="350" height="500" frameborder="0">Loading…</iframe>
+            </div>
+
+            <div class="contact-links" style="margin-top: 1.5rem;">
                 <a href="https://store.steampowered.com/developer/sensengames" class="contact-link">
                     <img src="./img/logo_small_steam.png" /> Steam 
                 </a>
@@ -792,14 +810,6 @@
                 <a href="https://drive.google.com/drive/folders/1L_eGgQdwwhAiC6X7qb9LjyxprvuhX3Ma" class="contact-link">
                     <img src="./img/logo_small_presskit.png" /> Press Kit
                 </a>
-            </div>
-            <div style="margin-top: 1.5rem; font-size: 1.1rem;">
-                <a href="mailto:team@sensengames.com">team@sensengames.com</a>
-            </div>
-
-            <div>
-                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdxrenwBdfQOKkD1T5lOaKaszax-pKQAQVe7fFrPWj_RDPrjg/viewform?embedded=true" 
-                    width="350" height="500" frameborder="0">Loading…</iframe>
             </div>
         </div>
     </section>
