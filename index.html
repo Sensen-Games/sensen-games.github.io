@@ -37,7 +37,7 @@
             line-height: 1.6;
             color: #333;
             overflow-x: hidden;
-            margin-right: 100px;
+            margin-left: 100px;
         }
 
         :root {
@@ -53,8 +53,6 @@
         .header {
             position: fixed;
             top: 0;
-            left: 0;
-            width: 100%;
             background: rgba(44, 44, 44, 0.95);
             backdrop-filter: blur(10px);
             z-index: 1000;
@@ -62,12 +60,10 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 100px;
             box-sizing: border-box;
-            right: 0;
+            left: 0;
             width: 100px;
             height: 100%;
-            left: unset;
             flex-flow: column;
         }
 
@@ -557,6 +553,7 @@
 
             body {
                 margin-right: 0px;
+                margin-left: 0px;
                 margin-top: 70px;
             }
 
