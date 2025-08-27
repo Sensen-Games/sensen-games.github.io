@@ -3,7 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sensen Games - Jogos Indie Nostálgicos</title>
+    <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+    <title>Sensen Games: Indie Games BR</title>
+
+    <!-- Meta Tags-->
+    <meta name="description" content="We're two brazilian brothers creating retro-inspired games. Check out 9th release Akuma's Bloodrain! A retro fps built upon japanese folklore!">
+    <meta name="title" content="Sensen Games: Indie Games BR">
+
+    <meta property="og:title" content="Sensen Games: Indie Games BR">
+    <meta property="og:site_name" content="Sensen Games: Indie Games BR">
+    <meta property="og:description" content="We're two brazilian brothers creating retro-inspired games. Check out 9th release Akuma's Bloodrain! A retro fps built upon japanese folklore!">
+    <meta property="og:url" content="https://sensengames.com">
+    <meta property="og:image" content="https://sensengames.com/img/social_thumb.jpg">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://sensengames.com/">
+    <meta name="twitter:title" content="Sensen Games: Indie Games BR">
+    <meta name="twitter:description" content="We're two Brazilian brothers crafting retro-inspired indie games. Discover our latest release: Akuma's Bloodrain!">
+    <meta name="twitter:image" content="https://sensengames.com/img/social_thumb.jpg">
+
+    <link rel="canonical" href="https://sensengames.com/">
+
     <style>
         * {
             margin: 0;
@@ -16,7 +37,7 @@
             line-height: 1.6;
             color: #333;
             overflow-x: hidden;
-            margin-right: 100px;
+            margin-left: 100px;
         }
 
         :root {
@@ -32,8 +53,6 @@
         .header {
             position: fixed;
             top: 0;
-            left: 0;
-            width: 100%;
             background: rgba(44, 44, 44, 0.95);
             backdrop-filter: blur(10px);
             z-index: 1000;
@@ -41,12 +60,10 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 100px;
             box-sizing: border-box;
-            right: 0;
+            left: 0;
             width: 100px;
             height: 100%;
-            left: unset;
             flex-flow: column;
         }
 
@@ -171,10 +188,12 @@
         }
 
         .hero-video video {
-            max-width: 100%;
             position: absolute;
-            width: 100%;
-            height: 100%;
+            min-width: 100%;
+            max-width: 135%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
         }
 
         .hero-overlay {
@@ -252,6 +271,14 @@
             align-items: center;
         }
 
+        .flex-column-centered {
+            display: flex;
+            justify-content: center;
+            flex-flow: column nowrap;
+            align-items: center;
+            text-align: center;
+        }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -301,9 +328,7 @@
         }
 
         .pixel-bros {
-            font-size: 3rem;
-            color: var(--primary-orange);
-            animation: bounce 2s infinite;
+            object-fit: cover;
         }
 
         @keyframes bounce {
@@ -401,9 +426,11 @@
             color: var(--white);
         }
         
+        /*
         .game-image.comingsoon {
             filter: grayscale(1);
         }
+        */
 
         .game-image > img {
             max-width: 100%;
@@ -467,6 +494,7 @@
             gap: 1.5rem;
             flex-wrap: wrap;
             margin-top: 1.5rem;
+            max-width: 800px;
         }
 
         .contact-link {
@@ -493,7 +521,14 @@
             transform: translateY(-3px);
         }
 
-        /* Responsive */
+        /* Responsive  */
+        @media (max-width: 950px) {
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
         @media (max-width: 768px) {
 
             .header {
@@ -527,11 +562,13 @@
 
             body {
                 margin-right: 0px;
+                margin-left: 0px;
                 margin-top: 70px;
             }
 
             .hero-content {
                 max-width: 80%;
+                backdrop-filter: blur(1px);
             }
 
             h2 {
@@ -540,11 +577,6 @@
 
             .hero-title {
                 font-size: 2rem;
-            }
-
-            .about-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
             }
 
             .contact-links {
@@ -558,6 +590,20 @@
 
             .game-image {
                 height: 152px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            html body .only-desktop {
+                display: none;
+            }
+        }
+
+        @media (max-width: 450px) {
+            .hero-video video {
+                max-height: 65%;
+                max-width: none;
+                margin-left: 70%;
             }
         }
 
@@ -582,16 +628,26 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        a {
+            text-decoration: underline;
+            color: #eef;
+        }
     </style>
 </head>
 <body>
     <!-- Header -->
     <header class="header">
         <a href="#home" class="logo"><img src="./img/logo.jpg" alt="Sensen Games"></a>
-        <a href="https://store.steampowered.com/developer/sensengames" class="link link-steam"><img src="./img/logo_steam.png" alt="Sensen Games Steam"></a>
-        <a href="https://www.instagram.com/sensengames/" class="link link-instagram"><img src="./img/logo_instagram.png" alt="Sensen Games Instagram"></a>
-        <a href="https://www.facebook.com/sensengames/" class="link link-facebook"><img src="./img/logo_facebook.png" alt="Sensen Games Facebook"></a>
-        <a href="https://bit.ly/sensen-presskit" class="link link-presskit"><img src="./img/logo_presskit.png" alt="Sensen Games Presskit"></a>
+        <a href="https://store.steampowered.com/developer/sensengames" class="link link-steam"><img src="./img/logo_small_steam.png" alt="Sensen Games Steam"></a>
+        <a href="https://drive.google.com/drive/folders/1L_eGgQdwwhAiC6X7qb9LjyxprvuhX3Ma" class="link link-presskit"><img src="./img/logo_small_presskit.png" alt="Sensen Games Presskit"></a>
+        <a href="https://instagram.com/sensengames/" class="link link-instagram"><img src="./img/logo_small_instagram.png" alt="Sensen Games Instagram"></a>
+        <a href="https://threads.com/sensengames" class="link link-threads only-desktop"><img src="./img/logo_small_threads.png" alt="Sensen Games Threads"></a>
+        <a href="https://sensengames.bsky.social/" class="link link-bluesky"><img src="./img/logo_small_bluesky.png" alt="Sensen Games Bluesky"></a>
+        <a href="https://x.com/sensengames" class="link link-x"><img src="./img/logo_small_x.png" alt="Sensen Games X"></a>
+        <a href="https://fb.com/sensengames/" class="link link-facebook only-desktop"><img src="./img/logo_small_facebook.png" alt="Sensen Games Facebook"></a>
+        <a href="mailto:team@sensengames.com" class="link link-email only-desktop"><img src="./img/logo_small_email.png" alt="Sensen Games Email"></a>
+
         <button class="hamburger" onclick="toggleMenu()">
             <span></span>
             <span></span>
@@ -602,16 +658,16 @@
     <!-- Mobile Menu -->
     <nav class="mobile-menu" id="mobileMenu">
         <a href="#home" onclick="closeMenu()">Home</a>
-        <a href="#about" onclick="closeMenu()">A Little about us</a>
+        <a href="#about" onclick="closeMenu()">A little bit about us</a>
         <a href="#games" onclick="closeMenu()">Our games</a>
-        <a href="#contact" onclick="closeMenu()">Get in touch</a>
+        <a href="#contact" onclick="closeMenu()">Connect with us</a>
     </nav>
 
     <!-- Hero Section -->
     <section class="hero" id="home">
         <!-- Placeholder for video background -->
         <div class="hero-video" style="background: #000; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: white;">
-        <video loop="true" autoplay="true" muted>s
+        <video loop="true" autoplay="true" muted>
             <source src="./videos/trailer.mp4" type="video/mp4" />
         </video>
         </div>
@@ -626,17 +682,17 @@
 
     <!-- About Section -->
     <section class="about fade-in" id="about">
-        <div class="container">
+        <div class="container ">
             <div class="about-content">
                 <div class="about-text">
-                    <h2>A Little about us</h2>
+                    <h2>A little bit about us</h2>
                     <p>
                         We are two brothers that play games together since Super Nintendo and Playstation 1 & 2 eras. We played Megaman X series, Castlevania Sotn, Super Metroid, Aero Fighters, Guitar Hero and other classics all day at the time! After a few years working as web programmer and web designer, we decided to start making the games in the style we love playing: challenging and fun!
                     </p>
                    
                 </div>
                 <div class="pixel-art">
-                    <div class="pixel-bros">👨‍💻👨‍🎨</div>
+                    <img class="pixel-bros" src="./img/brothers.jpg" alt="Brothers">
                 </div>
             </div>
         </div>
@@ -645,7 +701,7 @@
     <!-- Games Section -->
     <section class="games fade-in" id="games">
         <div class="container">
-            <h2>Our games</h2>
+            <h2>Our Games</h2>
             <div class="carousel-container">
                 <button class="carousel-nav prev" onclick="moveCarousel(1)">‹</button>
                 <button class="carousel-nav next" onclick="moveCarousel(-1)">›</button>
@@ -653,8 +709,22 @@
                     <div class="game-card">
                         <div class="game-image comingsoon"><img src="./img/akuma_header.jpg" alt=""></div>
                         <div class="game-info">
-                            <div class="game-title">Akuma's Bloodrain (Coming soon)</div>
+                            <div class="game-title">Akuma's Bloodrain (Demo Available)</div>
                             <a href="https://store.steampowered.com/app/3692360/Akumas_Bloodrain/" class="steam-link" target="_blank">Ver na Steam</a>
+                        </div>
+                    </div>
+                    <div class="game-card">
+                        <div class="game-image"><img src="./img/neonships_header.jpg" alt=""></div>
+                        <div class="game-info">
+                            <div class="game-title">Neon Ships: The Type'em Up Shooter</div>
+                            <a href="https://store.steampowered.com/app/1528580/Neon_Ships_The_Typeem_Up_Shooter/" class="steam-link" target="_blank">Ver na Steam</a>
+                        </div>
+                    </div>
+                    <div class="game-card">
+                        <div class="game-image"><img src="./img/smashing_header.jpg" alt=""></div>
+                        <div class="game-info">
+                            <div class="game-title">Smashing Spirits: Brazil's First Boxer</div>
+                            <a href="https://store.steampowered.com/app/1263200/Smashing_Spirits_Brazils_First_Boxer/" class="steam-link" target="_blank">Ver na Steam</a>
                         </div>
                     </div>
                     <div class="game-card">
@@ -686,13 +756,6 @@
                         </div>
                     </div>
                     <div class="game-card">
-                        <div class="game-image"><img src="./img/king_header.jpg" alt=""></div>
-                        <div class="game-info">
-                            <div class="game-title">King Bullseye: The Chess Strike</div>
-                            <a href="https://store.steampowered.com/app/1600870/King_Bullseye_The_Chess_Strike/" class="steam-link" target="_blank">Ver na Steam</a>
-                        </div>
-                    </div>
-                    <div class="game-card">
                         <div class="game-image"><img src="./img/sniper_header.jpg" alt=""></div>
                         <div class="game-info">
                             <div class="game-title">Sniper Ships: Shoot'em Up On Rails</div>
@@ -700,17 +763,10 @@
                         </div>
                     </div>
                     <div class="game-card">
-                        <div class="game-image"><img src="./img/neonships_header.jpg" alt=""></div>
+                        <div class="game-image"><img src="./img/king_header.jpg" alt=""></div>
                         <div class="game-info">
-                            <div class="game-title">Neon Ships: The Type'em Up Shooter</div>
-                            <a href="https://store.steampowered.com/app/1528580/Neon_Ships_The_Typeem_Up_Shooter/" class="steam-link" target="_blank">Ver na Steam</a>
-                        </div>
-                    </div>
-                    <div class="game-card">
-                        <div class="game-image"><img src="./img/smashing_header.jpg" alt=""></div>
-                        <div class="game-info">
-                            <div class="game-title">Smashing Spirits: Brazil's First Boxer</div>
-                            <a href="https://store.steampowered.com/app/1263200/Smashing_Spirits_Brazils_First_Boxer/" class="steam-link" target="_blank">Ver na Steam</a>
+                            <div class="game-title">King Bullseye: The Chess Strike</div>
+                            <a href="https://store.steampowered.com/app/1600870/King_Bullseye_The_Chess_Strike/" class="steam-link" target="_blank">Ver na Steam</a>
                         </div>
                     </div>
                 </div>
@@ -720,25 +776,40 @@
 
     <!-- Contact Section -->
     <section class="contact fade-in" id="contact">
-        <div class="container">
-            <h2>Get in touch</h2>
-            <p>Get in touch for partnerships, press, or just to chat about games!</p>
-            <div class="contact-links">
+        <div class="container flex-column-centered">
+            <h2>Connect with us</h2>
+            <p>Get in touch for partnerships, press coverage, or just to chat about games!</p>
+            <div style="margin-top: 1.5rem; font-size: 1.1rem;">
+                <a href="mailto:team@sensengames.com">team@sensengames.com</a>
+            </div>
+
+            <div style="margin-top: 1.5rem;">
+                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdxrenwBdfQOKkD1T5lOaKaszax-pKQAQVe7fFrPWj_RDPrjg/viewform?embedded=true" 
+                    width="350" height="500" frameborder="0">Loading…</iframe>
+            </div>
+
+            <div class="contact-links" style="margin-top: 1.5rem;">
                 <a href="https://store.steampowered.com/developer/sensengames" class="contact-link">
-                    <img src="./img/logo_steam.png" /> Steam Store
+                    <img src="./img/logo_small_steam.png" /> Steam 
                 </a>
                 <a href="https://www.instagram.com/sensengames/" class="contact-link">
-                    <img src="./img/logo_instagram.png" /> Instagram
+                    <img src="./img/logo_small_instagram.png" /> Instagram
+                </a>
+                <a href="https://threads.com/sensengames" class="contact-link">
+                    <img src="./img/logo_small_threads.png" /> Threads
+                </a>
+                <a href="https://x.com/sensengames" class="contact-link">
+                    <img src="./img/logo_small_x.png" /> X
+                </a>
+                <a href="https://sensengames.bsky.social/" class="contact-link">
+                    <img src="./img/logo_small_bluesky.png" /> Bluesky
                 </a>
                 <a href="https://www.facebook.com/sensengames/" class="contact-link">
-                    <img src="./img/logo_facebook.png" /> Facebook
+                    <img src="./img/logo_small_facebook.png" /> Facebook
                 </a>
-                <a href="https://bit.ly/sensen-presskit" class="contact-link">
-                    <img src="./img/logo_presskit.png" /> Press Kit
+                <a href="https://drive.google.com/drive/folders/1L_eGgQdwwhAiC6X7qb9LjyxprvuhX3Ma" class="contact-link">
+                    <img src="./img/logo_small_presskit.png" /> Press Kit
                 </a>
-            </div>
-            <div style="margin-top: 1.5rem; font-size: 1.1rem;">
-                team@sensengames.com
             </div>
         </div>
     </section>
